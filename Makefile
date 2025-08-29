@@ -4,10 +4,10 @@ SHELL := /bin/bash
 
 # Compiler and flags
 CC = emcc
-CFLAGS = -Wall -Werror -Wextra -O2 -g -I./inc
+CFLAGS = -Wall -Werror -Wextra -O3 -I./inc
 
 # Emscripten-specific flags
-WEBFLAGS = -s USE_GLFW=3 -s USE_WEBGL2=1 -s WASM=1 -s ASYNCIFY \
+WEBFLAGS = -s USE_GLFW=3 -s USE_WEBGL2=1 -s WASM=1 \
 			-s ALLOW_MEMORY_GROWTH=1 -s NO_EXIT_RUNTIME=1 \
 			--preload-file maps@/maps \
 			--preload-file textures@/textures \

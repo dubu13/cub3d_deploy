@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 12:22:36 by dkremer           #+#    #+#             */
-/*   Updated: 2024/10/09 19:37:34 by dhasan           ###   ########.fr       */
+/*   Updated: 2025/08/28 19:53:29 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	draw_wall(t_cub *game, int ray, int t_pix, int b_pix)
 	wall_data.t_pix = t_pix;
 	wall_data.b_pix = b_pix;
 	draw_wall_segment(game, ray, &wall_data);
-	mlx_delete_texture(wall_data.texture);
+	// mlx_delete_texture(wall_data.texture); // for cache tex.
 }
 
 void	render_wall(t_cub *game, int ray)

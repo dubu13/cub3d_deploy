@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 11:58:20 by dkremer           #+#    #+#             */
-/*   Updated: 2024/10/09 14:44:14 by dkremer          ###   ########.fr       */
+/*   Updated: 2025/08/28 21:30:43 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,24 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdbool.h>
+
+void init_trig_tables(void);
+
+static inline float fast_sin(float angle) {
+	int idx = (int)(angle * (float)TRIG_TABLE_SIZE / (2.0f * M_PI)) % TRIG_TABLE_SIZE;
+	
+	if (idx < 0)
+		idx += TRIG_TABLE_SIZE;
+	return sin_table[idx];
+}
+
+static inline float fast_cos(float angle) {
+	int idx = (int)(angle * (float)TRIG_TABLE_SIZE / (2.0f * M_PI)) % TRIG_TABLE_SIZE;
+	
+	if (idx < 0)
+		idx += TRIG_TABLE_SIZE;
+	return sin_table[idx];
+}
 
 //raycasting_utils.c
 int				inter_check(float angle, float *inter, float *step,

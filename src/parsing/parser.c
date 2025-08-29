@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 16:43:35 by dhasan            #+#    #+#             */
-/*   Updated: 2024/10/08 18:31:43 by dhasan           ###   ########.fr       */
+/*   Updated: 2025/08/29 12:15:06 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,10 @@ int	read_file(char *file, t_data *data)
 	int		fd;
 
 	fd = open(file, O_RDONLY);
+
 	if (fd == -1)
 		return (error("File does not exist or is not readable."), 0);
+
 	content = skip_nl(fd);
 	if (!save_content(content, data, fd) || !check_data(data))
 		return (close(fd), 0);

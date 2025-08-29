@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 15:53:50 by dkremer           #+#    #+#             */
-/*   Updated: 2024/10/05 22:05:34 by dkremer          ###   ########.fr       */
+/*   Updated: 2025/08/28 21:27:56 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # define SOUTH 1.5707963268 // PI / 2
 # define EAST 0
 # define WEST 3.1415926535 // PI
+
+#define TRIG_TABLE_SIZE 3600 // 0.1 degree steps
+
+extern float sin_table[TRIG_TABLE_SIZE];
+extern float cos_table[TRIG_TABLE_SIZE];
 
 typedef struct s_wall
 {
@@ -70,6 +75,11 @@ typedef struct s_data
 	unsigned int	height;
 	int				pos_x;
 	int				pos_y;
+	//wasm opt, cache tex.
+	mlx_texture_t *no_tex_ptr;
+	mlx_texture_t *so_tex_ptr;
+	mlx_texture_t *we_tex_ptr;
+	mlx_texture_t *ea_tex_ptr;
 }	t_data;
 
 typedef struct s_cub

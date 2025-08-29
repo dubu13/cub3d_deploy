@@ -6,7 +6,7 @@
 /*   By: dhasan <dhasan@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 15:47:14 by dhasan            #+#    #+#             */
-/*   Updated: 2025/08/27 19:02:10 by dhasan           ###   ########.fr       */
+/*   Updated: 2025/08/28 20:01:18 by dhasan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,40 @@
 
 mlx_texture_t	*get_textures(t_cub *game, int wall_hit)
 {
-	char			*texture;
-	const double	normalized_angle = nor_angle(game->ray->angle);
+	// char			*texture;
+	// const double	normalized_angle = nor_angle(game->ray->angle);
 
-	if (wall_hit == 0)
-	{
-		if (dir_check(normalized_angle, 'y'))
-			texture = game->data->we_texture;
-		else
-			texture = game->data->ea_texture;
-	}
-	else
-	{
-		if (dir_check(normalized_angle, 'x'))
-			texture = game->data->so_texture;
-		else
-			texture = game->data->no_texture;
-	}
-	return (mlx_load_png(texture));
+	// if (wall_hit == 0)
+	// {
+	// 	if (dir_check(normalized_angle, 'y'))
+	// 		texture = game->data->we_texture;
+	// 	else
+	// 		texture = game->data->ea_texture;
+	// }
+	// else
+	// {
+	// 	if (dir_check(normalized_angle, 'x'))
+	// 		texture = game->data->so_texture;
+	// 	else
+	// 		texture = game->data->no_texture;
+	// }
+	// return (mlx_load_png(texture)); //for cache tex.
+    const double	normalized_angle = nor_angle(game->ray->angle);
+
+    if (wall_hit == 0)
+    {
+        if (dir_check(normalized_angle, 'y'))
+            return game->data->we_tex_ptr;
+        else
+            return game->data->ea_tex_ptr;
+    }
+    else
+    {
+        if (dir_check(normalized_angle, 'x'))
+            return game->data->so_tex_ptr;
+        else
+            return game->data->no_tex_ptr;
+    }
 }
 
 double	get_texture_x(t_cub *game, mlx_texture_t *texture)
