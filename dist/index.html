@@ -13,8 +13,10 @@
     <div id="game-area">
       <h1>Cub3D Web Edition</h1>
       <p>
-        Use <b>WASD</b> to move, <b>←</b>/<b>→</b> to look around.<br>
-        Enjoy classic raycasting in your browser!
+        Experience a classic raycasting engine inspired by Wolfenstein 3D.
+        This 3D maze game uses mathematical raycasting techniques to render a pseudo-3D world from a 2D map.
+        Navigate through textured corridors using <b>WASD</b> keys and look around with <b>←</b>/<b>→</b> arrows.
+        Discover the fundamentals of early 3D graphics programming!
       </p>
         <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
     </div>
@@ -24,6 +26,13 @@
       var Module = {
         canvas: canvasElement
       };
+      
+      // Prevent arrow keys from scrolling the page
+      document.addEventListener('keydown', function(e) {
+        if(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space'].includes(e.key)) {
+          e.preventDefault();
+        }
+      });
     </script>
     
     <script async type="text/javascript" src="cub3D_web.js?v=1756411057"></script>
